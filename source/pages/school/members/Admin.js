@@ -51,12 +51,15 @@ export default class Admin extends Member {
 	};
 
 	_getAvgEvaluation(groups) {
-		groups.forEach(group => group.students.forEach(student => {
-			console.log(`
-				${student.name} 
-				average: ${Math.ceil(student._getAverageEvaluation())}, 
-				isAbsent: ${student.absent}
-			`);
-		}));
+		groups.forEach(group => {
+			console.log(`********* GROUP ${group.name}:`)
+			group.students.forEach(student => {
+				console.log(`
+					${student.name} 
+					average: ${Math.ceil(student._getAverageEvaluation())}, 
+					isAbsent: ${student.absent}
+				`);
+			})
+		});
 	}
 }
