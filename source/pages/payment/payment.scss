@@ -1,0 +1,15 @@
+table {
+
+	tbody {
+		tr {
+			&:nth-child(odd) {
+				background: #eee;
+			}
+		}
+	}
+
+	th,
+	td {
+		padding: 10px 15px;
+	}
+}

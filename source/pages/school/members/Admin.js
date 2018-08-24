@@ -56,7 +56,7 @@ export default class Admin extends Member {
 			group.students.forEach(student => {
 				console.log(`
 					${student.name} 
-					average: ${Math.ceil(student._getAverageEvaluation())}, 
+					average: ${Math.round(student._getAverageEvaluation())}, 
 					isAbsent: ${student.absent}
 				`);
 			})
