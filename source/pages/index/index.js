@@ -20,7 +20,7 @@ class App extends React.Component {
 						<main className='home'>
 							<h1>Hello, world!</h1>
 							<ul className="list">
-								{ this.getItemsOfList() }
+								{ this.getItems() }
 							</ul>
 						</main>
 					</div>
@@ -31,10 +31,14 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
+		console.log(this.props);
 		this.props.init();
+		setTimeout(() => {
+			console.log(this.props);
+		},10);
 	}
 
-	getItemsOfList = () => {
+	getItems = () => {
 		return this.props.list.map((li, key) => (
 			<li
 				className="list__item"
@@ -49,8 +53,8 @@ class App extends React.Component {
 export default connect(
     state => ({
         list: state.initialState
-    }),
-    { init }
+		}),
+		{ init }
 )(App);
 
 

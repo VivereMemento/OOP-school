@@ -1,5 +1,5 @@
-export const createTable = (selecContainer, headCells, data) => {
-	const container = document.querySelector(selecContainer);
+export const createTable = (selectContainer, headCells, data) => {
+	const container = document.querySelector(selectContainer);
 	const table = `<table>
 											<thead>
 													<tr></tr>
@@ -11,20 +11,24 @@ export const createTable = (selecContainer, headCells, data) => {
 	container.insertAdjacentHTML('beforeEnd', table);
 
 	function createHeadCells(headCells) {
-			const thead = container.querySelector('table thead tr');
+		const thead = container.querySelector('table thead tr');
 
-			headCells.forEach(cell => {
-					const headCell = `<th>${cell}</th>`;
-					thead.insertAdjacentHTML('beforeEnd', headCell);
-			})
+		headCells.forEach(cell => {
+			thead.insertAdjacentHTML('beforeEnd', `<th>${cell}</th>`);
+		})
 	}
 
+function createCell(obj) {
+	return Object.keys(obj).map(td => `<td>${obj[td]}</td>`)
+}
+
 	function createRows(obj) {
-			Object.keys(obj).forEach(elem => {
-					const tbody = container.querySelector('table tbody');
-					tbody.insertAdjacentHTML('beforeEnd', `<tr><td>${elem}</td><td>${obj[elem]}</td></tr>`);
-			});
+		obj.forEach(elem => {
+			const tbody = container.querySelector('table tbody');
+			tbody.insertAdjacentHTML('beforeEnd', `<tr>${createCell(elem)}</tr>`);
+		});
 	};
+
 
 	createHeadCells(headCells);
 	createRows(data);
