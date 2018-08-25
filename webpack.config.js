@@ -14,14 +14,14 @@ const entryPoints = require('./webpack/entry-points');
 
 const PATHS = {
 	source: path.join(__dirname, 'source'),
-	build: path.join(__dirname, 'build')
+	dist: path.join(__dirname, 'dist')
 };
 
 const common = merge([
 	{
 		entry: entryPoints(PATHS),
 		output: {
-			path: PATHS.build,
+			path: PATHS.dist,
 			filename: 'js/[name].js'
 		},
 		plugins: [

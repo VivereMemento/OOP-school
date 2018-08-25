@@ -11,7 +11,7 @@
     "dev": "webpack-dev-server --env development",
     "build": "npm run clean && webpack --env production",
     "serv": "static build",
-    "clean": "rimraf ./build"
+    "clean": "rimraf ./dist"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
