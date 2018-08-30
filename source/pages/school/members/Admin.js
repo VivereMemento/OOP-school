@@ -6,29 +6,27 @@ export default class Admin extends Member {
 	};
 
 	_createGroup(students, groups, groupLimit) {
-		const nameOfGroup = groups;
-		const limit = groupLimit;
 		let from = 0;
-		let to = limit;
+		let to = groupLimit;
 		const group = {
 			name: '',
 			students: []
 		};
 
-		return nameOfGroup.map(name => {
+		return groups.map(name => {
 			
 			return students.slice(from, to).reduce((result, student) => {
 
 				const completeGroup = {...result, name: name, students: [...result.students, student]};
 
 				if (
-					students.slice(from, to).length < limit &&
+					students.slice(from, to).length < groupLimit &&
 					students.slice(from, to).length >= students.slice(from, to).length / 2
 				) return group;
 
-				if (completeGroup.students.length === limit) {
+				if (completeGroup.students.length === groupLimit) {
 					from = to;
-					to = to + limit;
+					to = to + groupLimit;
 				}
 				
 				return completeGroup;
@@ -41,8 +39,7 @@ export default class Admin extends Member {
 	};
 
 	_distribution(teachers) {
-		const indexes = teachers.map(teacher => teachers.indexOf(teacher));
-		const teachersIndex = [...indexes];
+		const teachersIndex = teachers.map(teacher => teachers.indexOf(teacher));
 
 		return () => {
 			teachersIndex.push(teachersIndex.shift());

@@ -23,6 +23,7 @@ const initialState = fromJS([
 ]);
 
 export default (state = [], action) => {
+    console.log('THIS IS REDUCER INITIAL STATE');
     const { type } = action;
 
     switch(type) {

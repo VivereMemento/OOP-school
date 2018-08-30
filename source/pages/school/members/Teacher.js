@@ -42,12 +42,12 @@ export default class Teacher extends Member {
 			
 			if (!isAbsent) {
 				if (student._evaluation.hasOwnProperty(specialization)) {
-					student._evaluation[specialization] = student._evaluation[specialization] + this._generateRandom(10, experience);
+					student._evaluation[specialization] += this._generateRandom(10, experience);
 				} else {
 					student._evaluation[specialization] = this._generateRandom(10, experience);
 				}
 			} else {
-				student.absent = student.absent + 1;
+				student.absent += 1;
 			}
 			
 		});

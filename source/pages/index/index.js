@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Provider from './Root';
 import { connect } from 'react-redux';
-import { init } from '../../store/AC/init';
+import { init, start } from '../../store/AC';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 
@@ -33,6 +33,7 @@ class App extends React.Component {
 	componentDidMount() {
 		console.log(this.props);
 		this.props.init();
+		this.props.start(true);
 		setTimeout(() => {
 			console.log(this.props);
 		},10);
@@ -52,9 +53,18 @@ class App extends React.Component {
 
 export default connect(
     state => ({
-        list: state.initialState
+			list: state.initialState,
+			isStarted: state.start
 		}),
-		{ init }
+		{ init, start }
+		// dispatch => ({
+		// 	init() {
+		// 		dispatch({type: 'INIT'})
+		// 	},
+		// 	start() {
+		// 		dispatch({type: 'START'})
+		// 	}
+		// })
 )(App);
 
 
