@@ -19,7 +19,7 @@ export const createTable = (selectContainer, headCells, data) => {
 	}
 
 function createCell(obj) {
-	return Object.keys(obj).map(td => `<td>${obj[td]}</td>`)
+	return Object.keys(obj).map(td => `<td>${obj[td]}</td>`).join('\n');
 }
 
 	function createRows(obj) {
